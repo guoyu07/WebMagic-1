@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tool="http://www.springframework.org/schema/tool" xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jee
+		http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/tool
+		http://www.springframework.org/schema/tool/spring-tool-3.2.xsd
+		http://www.springframework.org/schema/cache
+		http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
+		http://www.springframework.org/schema/jdbc 
+		http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		"
+	default-lazy-init="false">
+	
+	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter">
+		<property name="beans">
+			<map>
+				<entry key="bean:name=testBean1" value-ref="testBean" />
+			</map>
+		</property>
+		<property name="notificationListenerMappings">
+			<map>
+				<entry key="bean:name=testBean1">
+					<bean class="web.jmx.ConsoleLoggingNotificationListener" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="testBean" class="org.springframework.jmx.JmxTestBean">
+		<property name="name" value="TEST" />
+		<property name="age" value="100" />
+	</bean>
+	
+	<bean id="exporter1" class="org.springframework.jmx.export.MBeanExporter">
+    <property name="beans">
+      <map>
+        <entry key="bean:name=testBean1" value-ref="testBean"/>
+      </map>
+    </property>
+    <property name="notificationListenerMappings">
+      <map>
+        <entry key="testBean">
+          <bean class="web.jmx.ConsoleLoggingNotificationListener"/>
+        </entry>
+      </map>
+    </property>
+  </bean>
+  
+  <bean id="exporter2" class="org.springframework.jmx.export.MBeanExporter">
+    <property name="beans">
+      <map>
+        <entry key="bean:name=testBean1" value-ref="testBean"/>
+      </map>
+    </property>
+    <property name="notificationListenerMappings">
+  <map>
+    <entry key="*">
+      <bean class="web.jmx.ConsoleLoggingNotificationListener"/>
+    </entry>
+  </map>
+</property>
+  </bean>
+  
+  <bean id="exporter3" class="org.springframework.jmx.export.MBeanExporter">
+    <property name="beans">
+      <map>
+        <entry key="bean:name=testBean1" value-ref="testBean"/>
+      </map>
+    </property>
+    <property name="notificationListeners">
+        <list>
+            <bean class="org.springframework.jmx.export.NotificationListenerBean">
+                <constructor-arg>
+                    <bean class="web.jmx.ConsoleLoggingNotificationListener"/>
+                </constructor-arg>
+                <property name="mappedObjectNames">
+                    <list>
+                        <value>bean:name=testBean1</value>
+                    </list>
+                </property>
+            </bean>
+        </list>
+    </property>
+  </bean>
+  
+  
+  
+  <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter">
+    <property name="beans">
+      <map>
+        <entry key="bean:name=testBean1" value-ref="testBean1"/>
+        <entry key="bean:name=testBean2" value-ref="testBean2"/>
+      </map>
+    </property>
+    <property name="notificationListeners">
+        <list>
+            <bean class="org.springframework.jmx.export.NotificationListenerBean">
+                <constructor-arg ref="customerNotificationListener"/>
+                <property name="mappedObjectNames">
+                    <list>
+                        <!-- handles notifications from two distinct MBeans -->
+                        <value>bean:name=testBean1</value>
+                        <value>bean:name=testBean2</value>
+                    </list>
+                </property>
+                <property name="handback">
+                    <bean class="java.lang.String">
+                        <constructor-arg value="This could be anything..."/>
+                    </bean>
+                </property>
+                <property name="notificationFilter" ref="customerNotificationListener"/>
+            </bean>
+        </list>
+    </property>
+  </bean>
+  
+  <!-- implements both the NotificationListener and NotificationFilter interfaces -->
+  <bean id="customerNotificationListener" class="web.jmx.ConsoleLoggingNotificationListener"/>
+
+  <bean id="testBean1" class="web.jmx.JmxTestBean">
+    <property name="name" value="TEST"/>
+    <property name="age" value="100"/>
+  </bean>
+
+  <bean id="testBean2" class="web.jmx.JmxTestBean">
+    <property name="name" value="ANOTHER TEST"/>
+    <property name="age" value="200"/>
+  </bean>
+</beans>
