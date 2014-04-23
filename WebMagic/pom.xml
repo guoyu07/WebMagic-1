@@ -24,6 +24,27 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>io.spring.repo.maven.release</id>
+			<url>http://repo.spring.io/release/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>io.spring.repo.maven.milestone</id>
+			<url>http://repo.spring.io/milestone/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>io.spring.repo.maven.snapshot</id>
+			<url>http://repo.spring.io/snapshot/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 
 	<distributionManagement>
@@ -33,7 +54,17 @@
 			<url>file://${deploy.basedir}/target/deploy</url>
 		</repository>
 	</distributionManagement>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>4.0.3.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -129,6 +160,7 @@
 			<version>1.0</version>
 			<scope>compile</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -141,6 +173,7 @@
 			<version>1.7.7</version>
 			<scope>compile</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
@@ -159,7 +192,8 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.0.2.RELEASE</version>
+			<version>4.0.3.RELEASE</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
