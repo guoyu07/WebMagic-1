@@ -16,7 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class DateFormatNamespaceHandler extends NamespaceHandlerSupport {
 
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("/dateFormat.xml", "/component.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("/dateFormat.xml", "/component.xml", "/prop.xml");
 		
 		SimpleDateFormat dateFormat = context.getBean("defaultDateFormat", SimpleDateFormat.class);
 		
@@ -25,6 +25,10 @@ public class DateFormatNamespaceHandler extends NamespaceHandlerSupport {
 		Component component = context.getBean("bionic-family", Component.class);
 		
 		System.out.println(component);
+		
+//		Component propcomponent = context.getBean("propcomponent", Component.class);
+//		
+//		System.out.println(propcomponent);
 	}
 	
 	@Override

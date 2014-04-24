@@ -1,2 +1,3 @@
 http\://www.webmagic.com/schema/magic/dateFormat.xsd=org/springframework/samples/xml/dateFormat.xsd
 http\://www.foo.com/schema/component/component.xsd=org/springframework/samples/xml/component.xsd
+http\://www.foo.com/schema/jcache/jcache.xsd=org/springframework/samples/xml/prop.xsd

@@ -1,2 +1,3 @@
 http\://www.webmagic.com/schema/magic=web.ns.DateFormatNamespaceHandler
 http\://www.foo.com/schema/component=web.ns.ComponentNamespaceHandler
+http\://www.foo.com/schema/jcache=web.ns.JCacheNamespaceHandler
