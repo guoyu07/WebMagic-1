@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: fei.liu
+Build-Jdk: 1.6.0_45
+Created-By: 1.6.0_45 (Oracle Corporation)
+Implementation-Title: WebMagic
+Implementation-Version: 1.0.0.Final
+Implementation-Vendor-Id: web.magic
+Specification-Title: web-magic
+Specification-Version: 1.0.0.Final
+Extension-Name: web-magic
+Specification-Vendor: fei.liu
+Implementation-Vendor: fei.liu
