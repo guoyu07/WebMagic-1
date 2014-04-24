@@ -6,7 +6,7 @@ case "$1" in
 	eclipse|-eclipse)
 	mvn clean:clean
 	mvn eclipse:clean
-	mvn eclipse:eclipse -DdwonloadSources=true #-DdownloadJavadocs=true
+	mvn eclipse:eclipse -DdownloadSources=true #-DdownloadJavadocs=true
 	;;
 	clean|-clean)
 	mvn clean:clean
