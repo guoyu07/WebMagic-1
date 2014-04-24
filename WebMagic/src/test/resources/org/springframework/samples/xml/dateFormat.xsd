@@ -3,7 +3,9 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:beans="http://www.springframework.org/schema/beans"
 	targetNamespace="http://www.webmagic.com/schema/magic"
 	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
 	<xsd:import namespace="http://www.springframework.org/schema/beans" />
+	
 	<xsd:element name="dateformat">
 		<xsd:complexType>
 			<xsd:complexContent>

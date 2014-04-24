@@ -8,7 +8,7 @@
 
     <!-- as a top-level bean -->
     <myns:dateformat id="defaultDateFormat" pattern="yyyy-MM-dd HH:mm" lenient="true"/>
-
+    
     <bean id="jobDetailTemplate" abstract="true">
         <property name="dateFormat">
             <!-- as an inner bean -->
