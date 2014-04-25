@@ -11,17 +11,17 @@
                 schemaLocation="http://www.springframework.org/schema/beans/spring-beans-4.0.xsd" />
 
 	<xsd:annotation>
-		<xsd:documentation><![CDATA[
+		<xsd:documentation>
+		<![CDATA[
 		Spring-Extension Service
-		]]></xsd:documentation>
+		]]>
+		</xsd:documentation>
 	</xsd:annotation>
 
-	<!-- base types -->
 	<xsd:complexType name="identifiedType" abstract="true">
 		<xsd:attribute name="id" type="xsd:string"/>
 	</xsd:complexType>
 
-	<!-- Top-level <services> tag -->
 	<xsd:element name="services">
 		<xsd:complexType>
 			<xsd:sequence>

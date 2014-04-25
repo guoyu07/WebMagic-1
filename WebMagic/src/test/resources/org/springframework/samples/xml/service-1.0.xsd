@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns="http://www.itjiehun.com/schema/magic/service"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:beans="http://www.springframework.org/schema/beans"
+		xmlns:tns="http://www.itjiehun.com/schema/magic/service"
+		targetNamespace="http://www.itjiehun.com/schema/magic/service" elementFormDefault="qualified">
+
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+	
+	<xsd:import namespace="http://www.springframework.org/schema/beans"
+                schemaLocation="http://www.springframework.org/schema/beans/spring-beans-4.0.xsd" />
+
+	<xsd:annotation>
+		<xsd:documentation><![CDATA[
+		Spring-Extension Service
+		]]></xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Top-level <services> tag -->
+	<xsd:element name="services">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="service"/>
+					<xsd:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:choice>
+				<xsd:element ref="services" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:anyAttribute namespace="##other" processContents="lax"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="service">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:group ref="beans:beanElements"/>
+					<xsd:attributeGroup ref="beans:beanAttributes"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

@@ -6,13 +6,10 @@
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.itjiehun.com/schema/magic/service http://www.itjiehun.com/schema/magic/service.xsd
-        http://www.itjiehun.com/schema/magic/service org/springframework/samples/xml/service.xsd">
-     
-    <services>
-    	<service id="ddd" name="d" class="sas">
-    		<property name="name" value="dsd"/>
-    	</service>
-    </services>
+        http://www.itjiehun.com/schema/magic/service service-1.0.xsd">
     
+    <services>
+    	<service></service>
+    </services>
 
 </beans:beans>

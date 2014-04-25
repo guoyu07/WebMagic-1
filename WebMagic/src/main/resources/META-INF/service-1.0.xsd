@@ -2,6 +2,7 @@
 
 <xsd:schema xmlns="http://www.itjiehun.com/schema/magic/service"
 		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:beans="http://www.springframework.org/schema/beans"
 		xmlns:tns="http://www.itjiehun.com/schema/magic/service"
 		targetNamespace="http://www.itjiehun.com/schema/magic/service" elementFormDefault="qualified">
 
