@@ -17,12 +17,10 @@
 		]]></xsd:documentation>
 	</xsd:annotation>
 
-	<!-- base types -->
 	<xsd:complexType name="identifiedType" abstract="true">
 		<xsd:attribute name="id" type="xsd:string"/>
 	</xsd:complexType>
 
-	<!-- Top-level <services> tag -->
 	<xsd:element name="services">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -30,7 +28,6 @@
 					<xsd:element ref="service"/>
 					<xsd:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
 				</xsd:choice>
-				<xsd:element ref="services" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
 			<xsd:anyAttribute namespace="##other" processContents="lax"/>
 		</xsd:complexType>
@@ -53,6 +50,7 @@
 				<xsd:element ref="property"/>
 				<xsd:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:choice>
+			<xsd:element ref="configurer"/>
 		</xsd:sequence>
 	</xsd:group>
 	
@@ -78,12 +76,32 @@
 		<xsd:attribute name="value" type="xsd:string"/>
 	</xsd:complexType>
 	
+	<xsd:element name="configurer">
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="item"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="item">
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="1">
+				<xsd:element ref="ref"/>
+				<xsd:element ref="value"/>
+				<xsd:any namespace="##other" processContents="strict"/>
+			</xsd:choice>
+			<xsd:attribute name="key" type="xsd:string" use="required"/>
+			<xsd:attribute name="ref" type="xsd:string"/>
+			<xsd:attribute name="value" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+	
 	<xsd:element name="ref">
 		<xsd:complexType>
 			<xsd:complexContent>
 				<xsd:restriction base="xsd:anyType">
-					<xsd:attribute name="bean" type="xsd:string"/>
-					<xsd:attribute name="parent" type="xsd:string"/>
+					<xsd:attribute name="service" type="xsd:string"/>
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>

@@ -9,7 +9,11 @@
         http://www.itjiehun.com/schema/magic/service service-1.0.xsd">
     
     <services>
-    	<service></service>
+    	<service>
+    		<configurer>
+    			<item key="k" ref="v"/>
+    		</configurer>
+    	</service>
     </services>
 
 </beans:beans>
