@@ -11,8 +11,11 @@
     <services>
     	<service>
     		<configurer>
-    			<item key="k" ref="v"/>
+    			<item key="ss">
+    				<ref service="ss"/>
+    			</item>
     		</configurer>
+    		<property name="ss" ref="ss"/>
     	</service>
     </services>
 
